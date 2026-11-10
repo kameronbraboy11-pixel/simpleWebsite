@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Products & Services | Columbia Fireflies</title>
+
+  <style>
+    /* GENERAL STYLES */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: #091723;
+      color: #f5f5e9;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #d0fc71;
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 34px;
+    }
+
+    p {
+      color: #afbbc0;
+    }
+
+    .eyebrow {
+      margin-bottom: 14px;
+      color: #d0fc71;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 23px;
+      background-color: #d0fc71;
+      color: #091723;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background-color: #e3ffad;
+    }
+
+    /* HEADER */
+    .announcement {
+      padding: 9px 15px;
+      background-color: #d0fc71;
+      color: #091723;
+      text-align: center;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      padding: 25px 0;
+      border-bottom: 1px solid #2a3b45;
+    }
+
+    .brand {
+      color: #d0fc71;
+      font-size: 23px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      font-size: 13px;
+    }
+
+    nav a:hover {
+      color: #d0fc71;
+    }
+
+    nav a[aria-current="page"] {
+      border-bottom: 2px solid #d0fc71;
+    }
+
+    /* PAGE INTRODUCTION */
+    .page-intro {
+      padding: 65px 0 45px;
+    }
+
+    h1 {
+      margin-bottom: 22px;
+      font-size: clamp(44px, 7vw, 76px);
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: #d0fc71;
+    }
+
+    .page-intro > p:last-child {
+      max-width: 650px;
+      font-size: 17px;
+    }
+
+    /* FEATURED PROMOTION */
+    .promotion {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      align-items: center;
+      gap: 35px;
+      padding: 35px;
+      border: 1px solid #7f9c55;
+      background-color: #1c302a;
+    }
+
+    .promotion h2 {
+      margin-bottom: 15px;
+      font-size: 38px;
+    }
+
+    .promotion p {
+      max-width: 570px;
+    }
+
+    .promo-price {
+      margin-bottom: 8px;
+      color: #d0fc71;
+      font-size: 42px;
+      font-weight: bold;
+    }
+
+    .promo-price span {
+      color: #f5f5e9;
+      font-size: 15px;
+      font-weight: normal;
+    }
+
+    .promo-code {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 9px 15px;
+      border: 1px dashed #d0fc71;
+      color: #d0fc71;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .promo-art {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+      border: 1px solid #526b42;
+      border-radius: 120px 120px 0 0;
+      background-color: #102431;
+      text-align: center;
+    }
+
+    .promo-art .firework {
+      color: #d0fc71;
+      font-size: 85px;
+      line-height: 1;
+    }
+
+    .promo-art strong {
+      margin-top: 20px;
+      font-size: 21px;
+      letter-spacing: 2px;
+    }
+
+    .promo-art small {
+      margin-top: 8px;
+      color: #afbbc0;
+      letter-spacing: 2px;
+    }
+
+    .fine-print {
+      margin-bottom: 0;
+      font-size: 12px;
+    }
+
+    /* CATALOG */
+    .catalog {
+      padding: 65px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 15px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid #2a3b45;
+      background-color: #102431;
+    }
+
+    .product-art {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 145px;
+      border-bottom: 1px solid #2a3b45;
+      background-color: #152c39;
+      font-size: 65px;
+    }
+
+    .product-card:nth-child(2) .product-art,
+    .product-card:nth-child(5) .product-art {
+      background-color: #23372c;
+    }
+
+    .product-card:nth-child(3) .product-art,
+    .product-card:nth-child(6) .product-art {
+      background-color: #273041;
+    }
+
+    .product-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 25px;
+    }
+
+    .category {
+      margin-bottom: 12px;
+      color: #d0fc71;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .product-card h3 {
+      margin-bottom: 12px;
+      font-size: 23px;
+    }
+
+    .product-card p {
+      font-size: 14px;
+    }
+
+    .features {
+      margin: 0 0 22px;
+      padding-left: 18px;
+      color: #afbbc0;
+      font-size: 13px;
+    }
+
+    .features li {
+      margin-bottom: 6px;
+    }
+
+    .price {
+      margin-top: auto;
+      padding-top: 18px;
+      border-top: 1px solid #38505d;
+      color: #d0fc71;
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    .price span {
+      color: #afbbc0;
+      font-size: 12px;
+      font-weight: normal;
+    }
+
+    /* HOW IT WORKS */
+    .process-section {
+      padding: 55px 0;
+      border-top: 1px solid #2a3b45;
+      border-bottom: 1px solid #2a3b45;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .step {
+      padding: 25px;
+      border: 1px solid #2a3b45;
+      background-color: #102431;
+    }
+
+    .step-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      background-color: #d0fc71;
+      color: #091723;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .step h3 {
+      margin-bottom: 12px;
+      font-size: 21px;
+    }
+
+    .step p {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    /* FINAL CALL TO ACTION */
+    .closing {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      padding: 55px 0;
+    }
+
+    .closing h2 {
+      margin-bottom: 12px;
+    }
+
+    .closing p {
+      margin-bottom: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      padding: 28px 0;
+      border-top: 1px solid #2a3b45;
+    }
+
+    footer a {
+      color: #d0fc71;
+      font-size: 12px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 11px;
+    }
+
+    /* TABLET LAYOUT */
+    @media (max-width: 950px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps {
+        gap: 15px;
+      }
+    }
+
+    /* PHONE LAYOUT */
+    @media (max-width: 650px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 20px;
+      }
+
+      .page-intro {
+        padding-top: 45px;
+      }
+
+      .promotion,
+      .product-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .promotion {
+        padding: 25px;
+      }
+
+      .promotion h2 {
+        font-size: 31px;
+      }
+
+      .promo-art {
+        min-height: 210px;
+      }
+
+      h2 {
+        font-size: 29px;
+      }
+
+      .catalog {
+        padding: 45px 0;
+      }
+
+      .closing,
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .announcement {
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">
+    YOUR NEXT GREAT NIGHT OUT STARTS HERE.
+  </div>
+
+  <!-- HEADER AND NAVIGATION -->
+  <header class="container">
+    <a href="index.html" class="brand">
+      ✳ COLUMBIA FIREFLIES
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="page2.html" aria-current="page">Our Offerings</a>
+      <a href="page3.html">About &amp; Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- PAGE INTRODUCTION -->
+    <section class="page-intro" aria-labelledby="page-title">
+      <p class="eyebrow">Find your kind of fun</p>
+
+      <h1 id="page-title">
+        BIG CHEERS.<br>
+        <span>BRIGHTER NIGHTS.</span>
+      </h1>
+
+      <p>
+        From a spontaneous night at the ballpark to a
+        celebration with your whole crew, explore our
+        fictional tickets, bundles, and fan experiences.
+      </p>
+    </section>
+
+    <!-- FEATURED PROMOTION -->
+    <section class="promotion" aria-labelledby="promo-title">
+      <div>
+        <p class="eyebrow">Featured student-project promotion</p>
+
+        <h2 id="promo-title">Fireworks Family Deal</h2>
+
+        <p>
+          Four seats. One unforgettable night.
+          Bring your favorite people for baseball and
+          a fireworks finale at a designated theme-night game.
+        </p>
+
+        <div class="promo-price">
+          $40 <span>for four tickets</span>
+        </div>
+
+        <p>
+          Use our fictional promotion code:
+        </p>
+
+        <div class="promo-code">GLOW40</div>
+
+        <div>
+          <a class="button" href="page3.html">
+            Ask About This Bundle ↗
+          </a>
+        </div>
+
+        <p class="fine-print">
+          Fictional offer: four standard seats at one designated
+          Fireworks Night game. Food and merchandise are not
+          included. Code GLOW40 identifies the $40 bundle;
+          it does not provide an additional discount.
+        </p>
+      </div>
+
+      <div class="promo-art" aria-hidden="true">
+        <span class="firework">✺</span>
+        <strong>LET IT GLOW.</strong>
+        <small>BASEBALL + YOUR FAVORITE PEOPLE</small>
+      </div>
+    </section>
+
+    <!-- PRODUCT AND SERVICE CATALOG -->
+    <section class="catalog" aria-labelledby="catalog-title">
+      <div class="section-heading">
+        <p class="eyebrow">The game-night lineup</p>
+        <h2 id="catalog-title">Pick your experience.</h2>
+
+        <p>
+          All prices and packages below are fictional
+          examples created for our class business.
+          Listed prices are the complete mock prices.
+        </p>
+      </div>
+
+      <div class="product-grid">
+
+        <!-- OFFERING 1 -->
+        <article class="product-card">
+          <div class="product-art" aria-hidden="true">⚾</div>
+
+          <div class="product-content">
+            <p class="category">Tickets</p>
+            <h3>Classic Game Night</h3>
+
+            <p>
+              Your seat for the big hits, close calls,
+              and cheers that make baseball better in person.
+            </p>
+
+            <ul class="features">
+              <li>One standard game ticket</li>
+              <li>One reserved seat</li>
+              <li>Access to regular game-night activities</li>
+            </ul>
+
+            <div class="price">
+              $15 <span>/ person</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- OFFERING 2 -->
+        <article class="product-card">
+          <div class="product-art" aria-hidden="true">🎓</div>
+
+          <div class="product-content">
+            <p class="category">Student special</p>
+            <h3>Study Break Seat</h3>
+
+            <p>
+              Trade your study guide for a scorecard.
+              A budget-friendly excuse to get your
+              friends out of the library.
+            </p>
+
+            <ul class="features">
+              <li>One standard game ticket</li>
+              <li>Valid student ID required</li>
+              <li>Available at designated student-night games</li>
+            </ul>
+
+            <div class="price">
+              $10 <span>/ student</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- OFFERING 3 -->
+        <article class="product-card">
+          <div class="product-art" aria-hidden="true">✨</div>
+
+          <div class="product-content">
+            <p class="category">Featured bundle</p>
+            <h3>Fireworks Family Deal</h3>
+
+            <p>
+              Make room for the whole crew.
+              Enjoy a game together, then finish
+              the evening under a sky full of color.
+            </p>
+
+            <ul class="features">
+              <li>Four standard game tickets</li>
+              <li>One designated Fireworks Night game</li>
+              <li>Fictional promotion code: GLOW40</li>
+            </ul>
+
+            <div class="price">
+              $40 <span>/ four-ticket bundle</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- OFFERING 4 -->
+        <article class="product-card">
+          <div class="product-art" aria-hidden="true">🎉</div>
+
+          <div class="product-content">
+            <p class="category">Group experience</p>
+            <h3>Bring the Crew</h3>
+
+            <p>
+              Clubs, classmates, coworkers, and friends:
+              turn your next get-together into a
+              ballpark celebration.
+            </p>
+
+            <ul class="features">
+              <li>Ten standard game tickets</li>
+              <li>Seats together when available</li>
+              <li>One group welcome on the scoreboard</li>
+            </ul>
+
+            <div class="price">
+              $120 <span>/ group of ten</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- OFFERING 5 -->
+        <article class="product-card">
+          <div class="product-art" aria-hidden="true">🧢</div>
+
+          <div class="product-content">
+            <p class="category">Fan merchandise</p>
+            <h3>Glow Gear Pack</h3>
+
+            <p>
+              Bring a little team spirit home with you.
+              This starter pack puts your
+              Fireflies pride on display.
+            </p>
+
+            <ul class="features">
+              <li>One fictional team-logo cap</li>
+              <li>One reusable souvenir cup</li>
+              <li>One Fireflies sticker sheet</li>
+            </ul>
+
+            <div class="price">
+              $25 <span>/ pack · admission not included</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- OFFERING 6 -->
+        <article class="product-card">
+          <div class="product-art" aria-hidden="true">🎂</div>
+
+          <div class="product-content">
+            <p class="category">Celebration package</p>
+            <h3>Birthday at the Ballpark</h3>
+
+            <p>
+              Another year deserves a bigger cheer.
+              Celebrate with your favorite people
+              and a birthday moment on the scoreboard.
+            </p>
+
+            <ul class="features">
+              <li>Eight standard game tickets</li>
+              <li>One birthday scoreboard message</li>
+              <li>One souvenir cup for the birthday guest</li>
+            </ul>
+
+            <div class="price">
+              $110 <span>/ eight-person package</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- THREE-STEP PROCESS -->
+    <section class="process-section"
+             aria-labelledby="process-title">
+
+      <p class="eyebrow">Less planning. More cheering.</p>
+      <h2 id="process-title">How it would work.</h2>
+
+      <p>
+        Our proposed customer process for the fictional business:
+      </p>
+
+      <ol class="steps">
+
+        <li class="step">
+          <div class="step-number" aria-hidden="true">1</div>
+
+          <h3>Pick Your Experience</h3>
+
+          <p>
+            Choose your game-night ticket, group package,
+            or merchandise bundle from the lineup.
+          </p>
+        </li>
+
+        <li class="step">
+          <div class="step-number" aria-hidden="true">2</div>
+
+          <h3>Confirm the Details</h3>
+
+          <p>
+            Our team would confirm availability, explain
+            the package, and provide ticket or pickup details.
+          </p>
+        </li>
+
+        <li class="step">
+          <div class="step-number" aria-hidden="true">3</div>
+
+          <h3>Show Up &amp; Shine</h3>
+
+          <p>
+            Bring your confirmation, meet your crew,
+            and enjoy the game. Merchandise would be
+            collected at the designated pickup desk.
+          </p>
+        </li>
+
+      </ol>
+
+      <p class="fine-print">
+        Demonstration only: this website does not process
+        orders, reserve seats, or accept payments.
+      </p>
+    </section>
+
+    <!-- CONTACT CALL TO ACTION -->
+    <section class="closing">
+      <div>
+        <p class="eyebrow">Make it a Fireflies night</p>
+        <h2>Not sure which package fits?</h2>
+
+        <p>
+          Visit our About &amp; Contact page to learn
+          more about the team behind the concept.
+        </p>
+      </div>
+
+      <a class="button" href="page3.html">
+        Get in Touch ↗
+      </a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <a href="index.html">
+      ✳ COLUMBIA FIREFLIES
+    </a>
+
+    <p>
+      Student business concept. Not an official team website.<br>
+      All products, packages, prices, and promotions are fictional.
+    </p>
+  </footer>
+</body>
+</html>

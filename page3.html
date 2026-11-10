@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About & Contact | Columbia Fireflies</title>
+
+  <style>
+    /* GENERAL STYLES */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: #091723;
+      color: #f5f5e9;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #d0fc71;
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.2;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 34px;
+    }
+
+    p {
+      color: #afbbc0;
+    }
+
+    .eyebrow {
+      color: #d0fc71;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* HEADER */
+    .announcement {
+      padding: 9px;
+      background-color: #d0fc71;
+      color: #091723;
+      text-align: center;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      padding: 25px 0;
+      border-bottom: 1px solid #2a3b45;
+    }
+
+    .brand {
+      color: #d0fc71;
+      font-size: 23px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      font-size: 13px;
+    }
+
+    nav a:hover {
+      color: #d0fc71;
+    }
+
+    nav a[aria-current="page"] {
+      border-bottom: 2px solid #d0fc71;
+    }
+
+    /* PAGE INTRODUCTION */
+    .page-intro {
+      padding: 70px 0 55px;
+      border-bottom: 1px solid #2a3b45;
+    }
+
+    h1 {
+      margin: 15px 0 25px;
+      font-size: clamp(44px, 7vw, 76px);
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: #d0fc71;
+    }
+
+    .page-intro p:last-child {
+      max-width: 650px;
+      font-size: 17px;
+    }
+
+    /* ORIGIN STORY */
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 60px;
+      padding: 65px 0;
+    }
+
+    .story p {
+      margin-top: 0;
+    }
+
+    .story-note {
+      padding-left: 18px;
+      border-left: 3px solid #d0fc71;
+      color: #f5f5e9;
+      font-weight: bold;
+    }
+
+    /* TEAM SECTION */
+    .team-section {
+      padding-bottom: 65px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .team-card {
+      padding: 28px;
+      border: 1px solid #2a3b45;
+      background-color: #102431;
+    }
+
+    .initials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      margin-bottom: 25px;
+      border: 1px solid #d0fc71;
+      border-radius: 50%;
+      color: #d0fc71;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .team-card h3 {
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    .role {
+      margin-top: 0;
+      color: #d0fc71;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .team-card p:last-child {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      padding: 60px 0;
+      border-top: 1px solid #2a3b45;
+      border-bottom: 1px solid #2a3b45;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 30px;
+    }
+
+    .contact-details dt {
+      margin-top: 20px;
+      color: #d0fc71;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .contact-details dd {
+      margin-left: 0;
+      color: #afbbc0;
+    }
+
+    .demo-note {
+      padding: 15px;
+      border-left: 3px solid #d0fc71;
+      background-color: #102431;
+      font-size: 13px;
+    }
+
+    /* MOCK CONTACT FORM */
+    form {
+      padding: 30px;
+      border: 1px solid #2a3b45;
+      background-color: #102431;
+    }
+
+    form h3 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px;
+      border: 1px solid #526570;
+      border-radius: 0;
+      background-color: #091723;
+      color: #f5f5e9;
+      font: inherit;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #afbbc0;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #d0fc71;
+      outline-offset: 2px;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .demo-button {
+      width: 100%;
+      padding: 14px 20px;
+      border: none;
+      background-color: #d0fc71;
+      color: #091723;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+
+    .form-note {
+      margin-bottom: 0;
+      font-size: 12px;
+    }
+
+    /* HOURS AND FAQ */
+    .information-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 60px;
+      padding: 65px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 13px 0;
+      border-bottom: 1px solid #2a3b45;
+      text-align: left;
+    }
+
+    th {
+      color: #f5f5e9;
+      font-weight: normal;
+    }
+
+    td {
+      color: #afbbc0;
+      text-align: right;
+    }
+
+    details {
+      margin-bottom: 12px;
+      padding: 18px;
+      border: 1px solid #2a3b45;
+      background-color: #102431;
+    }
+
+    summary {
+      color: #f5f5e9;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    details p {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      padding: 28px 0;
+      border-top: 1px solid #2a3b45;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 11px;
+    }
+
+    footer a {
+      color: #d0fc71;
+      font-size: 12px;
+    }
+
+    /* MOBILE LAYOUT */
+    @media (max-width: 750px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 20px;
+      }
+
+      .page-intro {
+        padding-top: 45px;
+      }
+
+      .story,
+      .team-grid,
+      .contact-grid,
+      .information-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .story,
+      .information-grid {
+        padding: 45px 0;
+      }
+
+      h2 {
+        font-size: 29px;
+      }
+
+      form {
+        padding: 22px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="announcement">
+    BUILT FOR BASEBALL. ROOTED IN COMMUNITY.
+  </div>
+
+  <!-- HEADER AND NAVIGATION -->
+  <header class="container">
+    <a href="index.html" class="brand">
+      ✳ COLUMBIA FIREFLIES
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="products.html">Our Offerings</a>
+      <a href="page3.html" aria-current="page">About &amp; Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- PAGE INTRODUCTION -->
+    <section class="page-intro" aria-labelledby="page-title">
+      <p class="eyebrow">The people behind the glow</p>
+
+      <h1 id="page-title">
+        OUR CITY.<br>
+        OUR STORY. <span>YOUR NIGHT.</span>
+      </h1>
+
+      <p>
+        We believe the best nights bring people together.
+        Meet the student founders behind our fictional
+        Columbia Fireflies business concept.
+      </p>
+    </section>
+
+    <!-- FICTIONAL ORIGIN STORY -->
+    <section class="story" aria-labelledby="story-title">
+      <div>
+        <p class="eyebrow">How it all started</p>
+
+        <h2 id="story-title">
+          One idea.<br>
+          A whole lot of spark.
+        </h2>
+      </div>
+
+      <div>
+        <p>
+          Our story started with three college students asking
+          a simple question: “What if planning a great night
+          out was as easy as picking a baseball game?”
+          Between classes, group projects, and busy schedules,
+          we wanted a place where students, families, and local
+          fans could come together and feel part of Columbia.
+        </p>
+
+        <p>
+          That conversation became our fictional Columbia
+          Fireflies business concept. By combining baseball,
+          themed events, and group experiences, we imagined
+          a business that sells more than tickets—it helps
+          people make memories.
+        </p>
+
+        <p class="story-note">
+          Our goal: turn an ordinary evening into a night
+          worth cheering about.
+        </p>
+      </div>
+    </section>
+
+    <!-- STUDENT FOUNDERS -->
+    <section class="team-section" aria-labelledby="team-title">
+      <p class="eyebrow">Meet the founders</p>
+      <h2 id="team-title">The team behind the scenes.</h2>
+
+      <p>
+        Student founders with fictional business roles.
+      </p>
+
+      <div class="team-grid">
+
+        <article class="team-card">
+          <div class="initials" aria-hidden="true">KB</div>
+
+          <h3>Kameron Braboy</h3>
+          <p class="role">Co-Founder &amp; IT Support Lead</p>
+
+          <p>
+            In our fictional business, Kameron keeps the
+            digital side of game night running smoothly.
+            He supports the website, organizes customer
+            information, and helps fans find what they need.
+          </p>
+        </article>
+
+        <article class="team-card">
+          <div class="initials" aria-hidden="true">C</div>
+
+          <h3>Christian</h3>
+          <p class="role">Co-Founder &amp; Baseball Operations Analyst</p>
+
+          <p>
+            In our fictional business, Christian turns
+            game-night information into useful insights.
+            He reviews attendance, promotion results, and
+            fan feedback to help plan better experiences.
+          </p>
+        </article>
+
+        <article class="team-card">
+          <div class="initials" aria-hidden="true">03</div>
+
+          <h3>[Third Member’s Name]</h3>
+          <p class="role">Co-Founder &amp; Fan Experience Lead</p>
+
+          <p>
+            In our fictional business, our fan experience
+            lead brings the extra spark. This role develops
+            theme-night ideas, plans group experiences,
+            and helps every visitor feel welcome.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CONTACT DETAILS AND MOCK FORM -->
+    <section class="contact-section" aria-labelledby="contact-title">
+      <p class="eyebrow">Let’s connect</p>
+      <h2 id="contact-title">We’re all ears. And cheers.</h2>
+
+      <div class="contact-grid">
+
+        <div>
+          <p>
+            Have a question about a group outing, a theme-night
+            idea, or our business concept? Here’s how fans
+            could reach our fictional team.
+          </p>
+
+          <dl class="contact-details">
+            <dt>Email</dt>
+            <dd>hello@columbiafireflies.example</dd>
+
+            <dt>Phone</dt>
+            <dd>(803) 555-0142</dd>
+
+            <dt>Concept Storefront</dt>
+            <dd>
+              The Glow Desk<br>
+              Fictional Campus Student Center, Room 101<br>
+              Columbia, SC
+            </dd>
+
+            <dt>Instagram</dt>
+            <dd>@FirefliesStudentConcept</dd>
+
+            <dt>TikTok</dt>
+            <dd>@FirefliesStudentConcept</dd>
+          </dl>
+
+          <p class="demo-note">
+            All contact details, social handles, and locations
+            shown here are fictional examples for a student
+            project. They are not official team contacts.
+          </p>
+        </div>
+
+        <form aria-labelledby="form-title"
+              aria-describedby="form-note">
+
+          <h3 id="form-title">Say hello.</h3>
+
+          <label for="name">Your Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            autocomplete="name"
+            placeholder="Enter your name">
+
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            placeholder="you@example.com">
+
+          <label for="topic">What’s on your mind?</label>
+          <select id="topic" name="topic">
+            <option value="">Choose a topic</option>
+            <option value="tickets">Game-night tickets</option>
+            <option value="groups">Group experiences</option>
+            <option value="themes">Theme-night ideas</option>
+            <option value="other">Something else</option>
+          </select>
+
+          <label for="message">Your Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Tell us what you’re thinking..."></textarea>
+
+          <button type="button" class="demo-button" disabled>
+            Send Message — Demo Only
+          </button>
+
+          <p id="form-note" class="form-note">
+            This is a mock contact form. Messages are not
+            sent or saved. Please do not enter sensitive
+            personal information.
+          </p>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- HOURS AND FAQ -->
+    <section class="information-grid">
+
+      <div>
+        <p class="eyebrow">When we’re around</p>
+        <h2>Hours of operation.</h2>
+
+        <p>
+          Pretend hours for our fictional Glow Desk.
+          These are not official stadium or game hours.
+        </p>
+
+        <table>
+          <caption class="eyebrow">Fictional Glow Desk Hours</caption>
+
+          <tbody>
+            <tr>
+              <th scope="row">Monday–Thursday</th>
+              <td>10 a.m.–6 p.m.</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Friday</th>
+              <td>10 a.m.–8 p.m.</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Saturday</th>
+              <td>Noon–8 p.m.</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Sunday</th>
+              <td>Closed</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <p class="eyebrow">Good questions. Glowing answers.</p>
+        <h2>Fan FAQ.</h2>
+
+        <p>Click a question to reveal the answer.</p>
+
+        <details>
+          <summary>Do I need to know baseball to have fun?</summary>
+          <p>
+            Not at all! Our concept welcomes first-time fans
+            as much as baseball experts. Come for the atmosphere,
+            enjoy the food, and cheer when your friends cheer.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can our student group plan an outing?</summary>
+          <p>
+            Absolutely—that’s what our fictional group
+            experiences are designed for. Imagine bringing
+            your classmates, campus club, or study group
+            together for a night away from the textbooks.
+          </p>
+        </details>
+
+        <details>
+          <summary>Why the name “Fireflies”?</summary>
+          <p>
+            For our student concept, fireflies represent the
+            little sparks that make a night memorable:
+            bright lights, big cheers, and time spent together.
+          </p>
+        </details>
+
+        <details>
+          <summary>What if my team loses?</summary>
+          <p>
+            The scoreboard might disagree with you, but
+            a night with your favorite people still counts
+            as a win. Snacks help, too.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I buy real tickets on this website?</summary>
+          <p>
+            No. This website is a student project and does
+            not sell tickets, accept payments, or represent
+            the official Columbia Fireflies organization.
+          </p>
+        </details>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <a href="index.html">✳ COLUMBIA FIREFLIES</a>
+
+    <p>
+      Student business concept. Not an official team website.<br>
+      Founder roles, story, contact details, and hours are illustrative.
+    </p>
+  </footer>
+</body>
+</html>
